@@ -48,7 +48,7 @@ exports.cssLoaders = function (options) {
       return ExtractTextPlugin.extract({
         use: loaders,
         fallback: 'vue-style-loader',
-        // publicPath: '../../' // bootstrap打包路径
+        publicPath: '../../' // bootstrap打包路径
       })
     } else {
       return ['vue-style-loader'].concat(loaders)
