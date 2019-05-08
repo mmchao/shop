@@ -32,7 +32,6 @@
               <div class="form">
                 <label class="col-form-label">姓名</label>
                 <input type="text" class="form-control" id="editName">
-
               </div>
               <div class="form">
                 <label class="col-form-label">地址</label>
@@ -147,11 +146,15 @@ export default {
       let userName = $("#editName")
       let streetName = $("#editStreet")
       let tel = $("#editTel")
-      if(userName.val().trim()&&streetName.val().trim()&&tel.val().trim()){
-        this.addressList[this.curIndex].userName = userName.val()
-        this.addressList[this.curIndex].streetName = streetName.val()
-        this.addressList[this.curIndex].tel = tel.val()
-        $('#edit').modal('hide')
+      if(userName.val().trim()&&streetName.val().trim()&&tel.val().trim()){ // trim去掉两端的空格 并返回去掉空格之后的值 再次调用val后两端已经没有空格
+        if(/^1[345789]\d{9}$|^\(0\d{2,3}\)[- ]?\d{8}$|^0\d{2,3}[- ]?\d{8}$/.test(tel.val().trim())) { // 匹配电话号码
+          this.addressList[this.curIndex].userName = userName.val()
+          this.addressList[this.curIndex].streetName = streetName.val()
+          this.addressList[this.curIndex].tel = tel.val()
+          $('#edit').modal('hide')
+        } else {
+          alert('请输入正确的电话号码')
+        }
       } else {
         alert('请输入完整地址')
       }
@@ -161,17 +164,21 @@ export default {
       let streetName = $("#addStreet")
       let tel = $("#addTel")
       if(userName.val().trim()&&streetName.val().trim()&&tel.val().trim()){ // trim去掉两端的空格 并返回去掉空格之后的值
-        let newAddress = {
-          'userName': userName.val(),
-          'streetName': streetName.val(),
-          'tel': tel.val(),
-          'isDefault': false
+        if(/^1[345789]\d{9}$|^\(0\d{2,3}\)[- ]?\d{8}$|^0\d{2,3}[- ]?\d{8}$/.test(tel.val().trim())) {
+          let newAddress = {
+            'userName': userName.val(),
+            'streetName': streetName.val(),
+            'tel': tel.val(),
+            'isDefault': false
+          }
+          this.addressList.unshift(newAddress)
+          userName.val('')
+          streetName.val('')
+          tel.val('')
+          $('#add').modal('hide') // 关闭模态框
+        } else {
+          alert('请输入正确的电话号码')
         }
-        this.addressList.unshift(newAddress)
-        userName.val('')
-        streetName.val('')
-        tel.val('')
-        $('#add').modal('hide') // 关闭模态框
       } else {
         alert('请输入完整地址')
       }
