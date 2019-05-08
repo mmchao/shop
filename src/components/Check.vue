@@ -37,7 +37,7 @@ export default {
   components: {
     CheckItem
   },
-  mounted(){
+  created(){
     this.checkAll() // 不加()
   },
   computed: {
