@@ -4,19 +4,19 @@
    
 ### 页面效果预览：   
 1、商品选择页面  
-![](read_me/1.png)  
+![](readme_img/1.png)  
    
-![](read_me/2.png)  
+![](readme_img/2.png)  
 功能：选择商品、增减数量、显示总数量及金额
   
 2、购物车页面  
-![](read_me/3.png)  
+![](readme_img/3.png)  
 功能：全选、取消全选、删除某件商品、增减数量，通过vuex使购物车与商品选择页面的数据保持同步
 
 3、地址选择页面  
-![](read_me/4.png)  
+![](readme_img/4.png)  
   
-![](read_me/5.png)  
+![](readme_img/5.png)  
   
-![](read_me/6.png)  
+![](readme_img/6.png)  
 功能：选择地址、设置默认地址、删除、编辑、添加地址、折叠和打开地址列表
